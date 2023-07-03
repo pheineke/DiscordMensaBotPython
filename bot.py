@@ -5,6 +5,14 @@ import discord
 from discord.ext import commands
 
 from dotenv import load_dotenv
+#IMPORTS Discord..............END
+
+#import usertime
+import re
+import json
+
+
+#IMPORTS......................END
 
 
 
@@ -13,21 +21,50 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
 intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
 
 
-client = commands.Bot(command_prefix = "+",intents=intents)
+bot = commands.Bot(command_prefix = "+",intents=intents)
 
-@client.event
+
+
+@bot.event
 async def on_ready():
+    print("Im Ready")
+
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    print("Message Content: " + message.content)
+
+    neuevariable = message.content.split()
+
+
+
+    if 'My.' in message.content:
+        if 'Mensatime' in message.content:
+            await message.channel.send(neuevariable)
+            await message.channel.send("And the oscar goes to " + str(message.author.mention))
+        else:
+            await message.channel.send('duhs ist Standort ' + str(message.author.mention))        
+
+
+        
+        #await message.channel.send('du hs')
+
+
+
+'''
+@bot.command()
+async def members(ctx):
     for guild in client.guilds:
-        if guild.name == GUILD:
-            break
+        for member in guild.members:
+            print(member)
 
-    print(f'{client.user} is connected to the following guild:\n'
-          f'{guild.name}(id: {guild.id})\n'
-          )
-    
-    members = '\n - '.join([member.name for member in guild.members])
-    print(f'Guild Members:\n  {members}')
+'''
 
-client.run(TOKEN)
+bot.run(TOKEN)

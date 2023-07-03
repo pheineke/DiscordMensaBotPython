@@ -1,0 +1,8 @@
+bla = list(map(int, re.findall('\d+', message.content)))
+print(bla)
+
+'''
+await message.channel.send('Deine SCHEIß MENSATIME IST')
+await message.channel.send(str(bla[0]) + ":" + str(bla[1]))
+
+'''
