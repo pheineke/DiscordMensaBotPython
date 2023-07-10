@@ -1,10 +1,11 @@
 #usertime.py
+import os
 import json
 import time
 
+
 with open('usercache.json', 'r') as f:
-        data = json.load(f)
-        
+                data = json.load(f)
 
 def savefile():
         with open('usercache.json', 'w') as f:
@@ -15,21 +16,34 @@ def userread(user):
         userdata = str(data[user])
         userdatalen = len(userdata)
         hour, minute = userdata[:userdatalen//2], userdata[userdatalen//2:]
-        if data[user] == "0":
+        if "0" in data[user]:
                 minute = "00"
+
         return (hour+minute)
 
 def userreadall():
-        keys = data.keys()
-        for key, value in data.items():
-            return str(key) + " " + str(value)
-        print(keys)
-        print(data.keys())
+        datalocal = data
+        keys = [k for k, v in datalocal.items() if v is None]
 
 
-def userwrite(user, time):
+        for x in keys:
+                userdelete(x)
+        local = json.dumps(datalocal, indent=4)
+        return local
+
+
+def userwrite(user, time=None, status=None):
         user = user.lower()
-        data[user] = time
+        timestatus = {}
+        timestatus[time] = status
+        '''
+        if status is None:
+                data[user][time] = ""
+        elif status.lower() == "none":
+                data[user][time] = "none"
+        '''
+        
+        data[user] = timestatus
 
         savefile()
 
@@ -42,6 +56,9 @@ def userdelete(user):
                 raise Exception("user does not exist")    
 
         savefile()
+
+
+
 
 # TESTING:
 

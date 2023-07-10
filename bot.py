@@ -74,8 +74,8 @@ async def on_message(message):
                                 await message.channel.send(str(author) + " deine Mensatime wurde auf " + usertime.userread(author) + "gestellt.")
 
                         else: await message.channel.send("Das ist keine gültige Uhrzeit.\nUhrzeiten werden folgendermaßen angegeben: HH:MM")
-            elif "deinemom" or "mom" in messagecontent:
-                await message.channel.send("Deine Mutter passt in keine Zeitrechnung im Universum.")
+            elif 'None' in messagecontent:
+                
             else:
                 try:
                     userread = usertime.userread(author)
@@ -88,7 +88,7 @@ async def on_message(message):
             await message.channel.send("Du hast leider keinen gültigen Befehl eingegeben." + str(message.author.mention))
     elif "xs.mensatime" in messagecontent: 
         await message.channel.send("Mensazeiten für eingetragene User")
-        usertime.userreadall()
+        await message.channel.send(usertime.userreadall())
 
 #BOT >>RUN
 bot.run(TOKEN)
