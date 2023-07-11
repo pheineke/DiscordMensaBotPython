@@ -29,6 +29,7 @@ bot = commands.Bot(command_prefix = "",intents=intents)
 @bot.event
 async def on_ready():
     print("Im Ready")
+    await bot.client.change_presence(activity=discord.Game("Listening to my.help"), status=discord.Status.online)
 
 
 @bot.event
