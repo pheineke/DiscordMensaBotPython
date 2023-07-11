@@ -67,7 +67,7 @@ async def on_message(message):
             await message.channel.send(f"{author} Deine Zeit ({checkarray[2]}:{checkarray[3]}) wurde eingetragen.")
     
     if "my.mensatime.help" == messagecontent or "my.help" == messagecontent:
-        description = "Der Bot unterstützt folgende Befehle:\nmy.mensatime\n> ohne weiteren Command gibt er euch eure Zeit zurück.\n> = HH:MM oder HH Uhr oder HH:MM Uhr - geht alles.\n> False - wird später bei xs.mensatime wichtig.\nxs.mensatime\n> Gibt euch eine Liste zurück von Mensazeiten der User, die sich eingetragen haben.\n> Insofern ihr bei my.mensatime = False eingegeben habt, werdet ihr in der xs Liste nicht aufgelistet.\n> Ihr müsst aber um euch wieder einzutragen, einfach euch eine neue Uhrzeit setzen."
+        description = "Der Bot unterstützt folgende Befehle:\nmy.help oder my.mensatime.help - trivial.\nmy.mensatime\n> ohne weiteren Command gibt er euch eure Zeit zurück.\n> = HH:MM oder HH Uhr oder HH:MM Uhr - geht alles.\n> False - wird später bei xs.mensatime wichtig.\nxs.mensatime\n> Gibt euch eine Liste zurück von Mensazeiten der User, die sich eingetragen haben.\n> Insofern ihr bei my.mensatime = False eingegeben habt, werdet ihr in der xs Liste nicht aufgelistet.\n> Ihr müsst aber um euch wieder einzutragen, einfach euch eine neue Uhrzeit setzen."
         embed = discord.Embed(title="MensaBot Help", description=description,color=0x9998ff)
         await message.channel.send(embed = embed)
 
