@@ -37,6 +37,9 @@ async def on_message(message):
         return
     
     author = message.author.mention
+    author2 = str(message.author)
+    print(author2)
+
     messagecontent = message.content.lower()
     print("Message Content: " + message.content)
 
@@ -44,22 +47,22 @@ async def on_message(message):
         checkarray = mensatime.check(messagecontent)
 
         if checkarray[0] == 0:
-            await message.channel.send(f"{author} Deine Mensazeit ist: {usertime.userread(author)}")
+            await message.channel.send(f"{author} Deine Mensazeit ist {usertime.userread(author2)}")
         elif checkarray[0] == 1:
             await message.channel.send(f"{author} Folgende Mensazeiten sind eingetragen:\n {usertime.userreadall()}")
         elif checkarray[0] == 2:
-            usertime.userwrite(author, 'False')
+            usertime.userwrite(author2, 'False')
             await message.channel.send(f"{author} Usertime wurde disabled.")
         elif checkarray[0] == 3:
             await message.channel.send(f"{author} Um deine Usertime zu enablen setze deine Mensatime auf eine neue Uhrzeit.")
         elif checkarray[0] == 4:
             await message.channel.send(f"{author} Deine Eingabe war ungültig.")
         elif checkarray[0] == 5:
-            usertime.userwrite(author, checkarray[1])
+            usertime.userwrite(author2, checkarray[1])
             
             await message.channel.send(f"{author} Deine Zeit ({checkarray[2]} Uhr) wurde eingetragen.")
         elif checkarray[0] == 6:
-            usertime.userwrite(author, checkarray[1])
+            usertime.userwrite(author2, checkarray[1])
             
             await message.channel.send(f"{author} Deine Zeit ({checkarray[2]}:{checkarray[3]}) wurde eingetragen.")
        
