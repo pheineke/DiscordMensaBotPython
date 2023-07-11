@@ -17,7 +17,7 @@ def check(messagecontent):
     userwrite 3 True
     baduserinput 4
 
-    userwritehour 5
+    userwritehour (and minute=zero 5
 
     userwritehourminute 6
 
@@ -25,7 +25,7 @@ def check(messagecontent):
     '''
 
     if myxs == 'my':
-        if equal and time:
+        if equal[0] == '=' and time:
             if time[0] == 'False':
                 return [2, 'False']
             elif time[0] == 'True':
@@ -36,12 +36,21 @@ def check(messagecontent):
                 except:
                     return [4]
                 else:
-                    try:
-                        minute = int(time[1])
-                    except:
-                        return [5, hour]
+                    if (0 <= hour <= 24):
+                        try:
+                            minute = int(time[1])
+                        except:
+                            return [5, hour*100, hour]
+                        else:
+                            if (0 <= minute <= 59):
+                                if minute == 0:
+                                    return [5, hour*100, hour]
+                                else:
+                                    return [6, hour*100+minute, hour, minute]
+                            else:
+                                return [4]
                     else:
-                        return [6, hour, minute]
+                        return [4]
 
                     
         else:
@@ -51,11 +60,10 @@ def check(messagecontent):
         return [1]
     
 
-
 # TESTING:
 
 if __name__ == "__main__":
-        print(check("xs."))
+        print(check("xs.mensatime"))
 
 
     

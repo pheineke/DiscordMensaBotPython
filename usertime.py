@@ -3,59 +3,52 @@ import os
 import json
 import time
 
-
-with open('usercache.json', 'r') as f:
+def openfile():
+        with open('usercache.json', 'r') as f:
                 data = json.load(f)
+                return data
 
-def savefile():
+def savefile(datas):
         with open('usercache.json', 'w') as f:
-                json.dump(data,f)
+                json.dump(datas,f)
 
 def userread(user):
+        localreaddata = openfile()
         user = user.lower()
-        userdata = str(data[user])
+        userdata = str(localreaddata[user])
         userdatalen = len(userdata)
         hour, minute = userdata[:userdatalen//2], userdata[userdatalen//2:]
-        if "0" in data[user]:
-                minute = "00"
 
         return (hour+minute)
 
 def userreadall():
-        datalocal = data
-        keys = [k for k, v in datalocal.items() if v is None]
+        localreadall = openfile()
 
+        keys = [k for k, v in localreadall.items() if v == "False"]
 
         for x in keys:
-                userdelete(x)
-        local = json.dumps(datalocal, indent=4)
-        return local
+                del localreadall[x]
+        return localreadall
 
 
-def userwrite(user, time=None, status=None):
+def userwrite(user, time):
+        localuserwrite = openfile()
         user = user.lower()
-        timestatus = {}
-        timestatus[time] = status
-        '''
-        if status is None:
-                data[user][time] = ""
-        elif status.lower() == "none":
-                data[user][time] = "none"
-        '''
-        
-        data[user] = timestatus
+        localuserwrite[user] = time
 
-        savefile()
+        savefile(localuserwrite)
 
 def userdelete(user):
+        localuserdelete = openfile()
+
         user = user.lower()
 
-        if user in data:
-                del data[user]
-        else:
-                raise Exception("user does not exist")    
+        try:
+                del localuserdelete["joshie"]
+        except:
+                return "Diesen User gibt es nicht."
 
-        savefile()
+        savefile(localuserdelete)
 
 
 
@@ -67,7 +60,10 @@ if __name__ == "__main__":
         time.sleep(5)
         userwrite("Moritz", 1350)
         time.sleep(5)
+        userwrite("Joshie", "False")
+        time.sleep(5)
         print(userread("Joshie"))
         time.sleep(5)
-        userdelete("Joshie")
-        userreadall()
+        print(userreadall())
+        time.sleep(5)
+        print(userreadall())
