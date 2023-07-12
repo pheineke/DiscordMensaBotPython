@@ -2,14 +2,14 @@ import re
 import usertime
 
 def check(messagecontent):
-    messagesplit = re.split(r'[.: ]', messagecontent)
+    messagesplit = re.split(r'[.: ​]', messagecontent)
 
     myxs = messagesplit[0]
     mensatime = messagesplit[1:]
     equal = messagesplit[2:]
     time = messagesplit[3:]
     
-    #return myxs, mensatime, equal, time
+    print(myxs, mensatime, equal, time)
 
 
     '''
@@ -22,11 +22,11 @@ def check(messagecontent):
 
     userdelete 5
 
-    baduserinput 5
-
-    userwritehour (and minute=zero 6
+    baduserinput 6
 
     userwritehourminute 7
+
+    usersetuser 8
 
 
     var <-
@@ -46,27 +46,35 @@ def check(messagecontent):
                     return [4, 'nconst']
                 elif time0 == 'del' or time0 == 'delete':
                     return [5]
+                elif '<@' in time0 and '>' in time0:
+                    return [8, time0]
                 else:
                     try:
                         hour = int(time0)
                     except:
                         return [6]
                     else:
-                        if (0 <= hour <= 24):
-                            try:
-                                minute = int(time[1])
-                            except:
-                                return [7, hour*100, hour]
-                            else:
-                                if (0 <= minute <= 59):
-                                    if minute == 0:
-                                        return [7, hour*100, hour]
-                                    else:
-                                        return [8, hour*100+minute, hour, minute]
-                                else:
-                                    return [6]
+                        if hour == 0:
+                            hourstr = "00"
+                        elif 0 < hour < 10:
+                            hourstr = "0" + str(hour)
+                        elif 9 < hour < 24:
+                            hourstr = str(hour)
+                        
+                        try:
+                            minute = int(time[1])
+                        except:
+                            return [7, hourstr + "00", hourstr, "00"]
                         else:
-                            return [6]
+                            if minute == 0:
+                                minutestr = "00"
+                            elif 0 < minute < 10:
+                                minutestr = "0" + str(minute)
+                            elif 9 < minute < 59:
+                                minutestr = str(minute)
+
+                            return [7, hourstr + minutestr, hourstr, minutestr]
+
             else:
                 return[6]
              

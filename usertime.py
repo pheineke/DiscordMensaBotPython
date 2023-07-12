@@ -14,8 +14,6 @@ def userread(user):
         localreaddata = jsh.openjsonfile('usercache.json')
         user = user.lower()
 
-
-
         try:
                 userdata = str(localreaddata[user])
         except:
@@ -57,13 +55,24 @@ def userreadall():
 
 
 def userwrite(user, time):
-        if type(time) is str:
-                time=time.lower()
         localuserwrite = jsh.openjsonfile('usercache.json')
         user = user.lower()
         localuserwrite[user] = time
 
         jsh.savefile(localuserwrite, 'usercache.json')
+
+def userwriteuser(user0, user1):
+        try:
+                user1time = userread(user1)
+        except:
+                return "nicht gefunden."
+        else:
+                user0 = user0.lower()
+                userwrite(user0, user1time[:2] + user1time[3:])
+                return "als deine Zeit eingetragen." 
+
+        
+
 
 def userdelete(user):
         localuserdelete = jsh.openjsonfile('usercache.json')

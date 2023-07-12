@@ -39,10 +39,11 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author == bot.user:
+    if message.author.bot:
         return
-    
+
     author = message.author.mention
+    print(author)
     author2 = str(message.author)
     print(author2)
 
@@ -50,6 +51,13 @@ async def on_message(message):
     print("Message Content: " + message.content)
 
     if "mensatime" in messagecontent:
+        # Erwähnten Benutzer abrufen
+        if message.mentions:
+            member = message.mentions[0]
+            username = member.name
+
+        
+
         checkarray = mensatime.check(messagecontent)
 
         if checkarray[0] == 0:
@@ -59,7 +67,7 @@ async def on_message(message):
             await message.channel.send(f"{author} Folgende Mensazeiten sind eingetragen:\n```\n{usertime.userreadall()}\n```")
             #await message.channel.send(embed = embedxslist)
         elif checkarray[0] == 2:
-            usertime.userwrite(author2, 'False')
+            usertime.userwrite(author2, 'false')
             await message.channel.send(f"{author} Usertime wurde disabled.")
         elif checkarray[0] == 3:
             await message.channel.send(f"{author} Um deine Usertime zu enablen setze deine Mensatime auf eine neue Uhrzeit.")
@@ -76,10 +84,11 @@ async def on_message(message):
             await message.channel.send(f"{author} Deine Eingabe war ungültig.")
         elif checkarray[0] == 7:
             usertime.userwrite(author2, checkarray[1])
-            await message.channel.send(f"{author} Deine Zeit ({checkarray[2]} Uhr) wurde eingetragen.")
+            await message.channel.send(f"{author} Deine Zeit ({checkarray[2]}:{checkarray[3]} Uhr) wurde eingetragen.")
         elif checkarray[0] == 8:
-            usertime.userwrite(author2, checkarray[1])
-            await message.channel.send(f"{author} Deine Zeit ({checkarray[2]}:{checkarray[3]}) wurde eingetragen.")
+            membername = username
+            print(membername)
+            await message.channel.send(f"{author} Die Zeit von {checkarray[1]} wurde {usertime.userwriteuser(author2, membername)}")
     
     if "my.mensatime.help" == messagecontent or "my.help" == messagecontent:
         description = "Der Bot unterstützt folgende Befehle:\n**my.help** oder **my.mensatime.help** - trivial.\n**my.mensatime**\n> ohne weiteren Command gibt er euch eure Zeit zurück.\n> = HH:MM oder HH Uhr oder HH:MM Uhr - geht alles.\n> **False** - wird später bei xs.mensatime wichtig.\nxs.mensatime\n> Gibt euch eine Liste zurück von Mensazeiten der User, die sich eingetragen haben.\n> Insofern ihr bei my.mensatime = False eingegeben habt, werdet ihr in der xs Liste nicht aufgelistet.\n> Ihr müsst aber um euch wieder einzutragen, einfach euch eine neue Uhrzeit setzen."
