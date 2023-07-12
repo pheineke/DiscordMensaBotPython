@@ -88,6 +88,7 @@ def check(messagecontent):
 # TESTING:
 
 # Array Eingaben mal anhand von length checken
+# Variable Wochentage
 
 if __name__ == "__main__":
         print(check("my.mensatime = none"))
