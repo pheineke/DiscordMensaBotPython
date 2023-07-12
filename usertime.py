@@ -50,7 +50,7 @@ def userreadall():
                         header=["User", "Zeit"],
                         body=finallist,
                         style=PresetStyle.thin_compact)
-                print(finallist)
+                #print(finallist)
                 return finallist
 
 

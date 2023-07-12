@@ -88,7 +88,7 @@ async def on_message(message):
             await message.channel.send(f"{author} Deine Zeit ({checkarray[2]}:{checkarray[3]} Uhr) wurde eingetragen.")
         elif checkarray[0] == 8:
             membername = username
-            print(membername)
+            #print(membername)
             await message.channel.send(f"{author} Die Zeit von {checkarray[1]} wurde {usertime.userwriteuser(author2, membername)}")
     
     if "my.mensatime.help" == messagecontent or "my.help" == messagecontent:
