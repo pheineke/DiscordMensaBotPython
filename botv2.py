@@ -29,7 +29,7 @@ bot = commands.Bot(command_prefix = "",intents=intents)
 @bot.event
 async def on_ready():
     print("Im Ready")
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Listening to my.help"), status=discord.Status.online)
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=" to my.help"), status=discord.Status.online)
 
 
 @bot.event
