@@ -34,7 +34,7 @@ async def on_ready():
     print("Im Ready")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="my.help"), status=discord.Status.online)
     
-    p = subprocess.Popen([sys.executable, './time.py'], 
+    p = subprocess.Popen([sys.executable, './currenttime.py'], 
                                     stdout=subprocess.PIPE, 
                                     stderr=subprocess.STDOUT)
 
