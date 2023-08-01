@@ -1,5 +1,6 @@
 import jsonhandler
 from usertime import userreset as userreset
+from table2ascii import table2ascii as t2a, PresetStyle
 from datetime import datetime
 import time
 
