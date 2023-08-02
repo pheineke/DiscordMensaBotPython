@@ -62,7 +62,7 @@ async def on_message(message):
         if checkarray[0] == 0:
             await message.channel.send(f"{author} Deine Mensazeit ist {usertime.userread(author2)}")
         elif checkarray[0] == 1:
-            embedxslist = discord.Embed(title="Folgende Mensazeiten sind eingetragen:\n", description=usertime.userreadall(), color = 0x9998ff)
+            #embedxslist = discord.Embed(title="Folgende Mensazeiten sind eingetragen:\n", description=usertime.userreadall(), color = 0x9998ff)
             await message.channel.send(f"{author} Folgende Mensazeiten sind eingetragen:\n```\n{usertime.userreadall()}\n```")
             #await message.channel.send(embed = embedxslist)
         elif checkarray[0] == 2:
