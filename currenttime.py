@@ -5,7 +5,7 @@ import time
 
 while True:
     currenttime = str(datetime.now().strftime("%H:%M"))
-    if currenttime == "15:00":
+    if currenttime == "18:10":
         userreset()
-        time.sleep(2)
+        time.sleep(30)
 

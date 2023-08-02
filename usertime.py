@@ -105,18 +105,21 @@ def deluserconst(user):
         jsh.savefile(localuserdelete,'userconstants.json')
 
 def userreset():
-        userresetlist = []
         localuserconstants = jsh.openjsonfile('userconstants.json')
         data = jsh.openjsonfile('usercache.json')
-        for k,v in data:
-                for x,y in localuserconstants:
-                        if k != x:
-                                data[y] = "false"
-        jsh.savefile(data, 'usercache.json')
+        data2 = data
+        for (x,y) in localuserconstants.items():
+                if not x in data:
+                        data2[x] = "false"
+                if not y in data:
+                        data2[y] = "false"
+        jsh.savefile(data2, 'usercache.json')
 
 # TESTING:
 
 if __name__ == "__main__":
+        userreset()
+        '''
         sleep = 2
         userwrite("Joshie", 1340)
         print("Userwrite Joshie, 1340 DONE")
@@ -141,3 +144,4 @@ if __name__ == "__main__":
         time.sleep(sleep)
         userreadall()
         print("Userreadall DONE")
+        '''

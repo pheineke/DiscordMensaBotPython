@@ -34,7 +34,7 @@ async def on_ready():
     print("Im Ready")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="my.help"), status=discord.Status.online)
     
-    subprocess.Popen(["python3", "currenttime.py"])
+    subprocess.Popen(["python", "currenttime.py"])
 
 @bot.event
 async def on_message(message):

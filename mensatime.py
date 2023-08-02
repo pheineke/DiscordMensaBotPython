@@ -70,7 +70,7 @@ def check(messagecontent):
                                 minutestr = "00"
                             elif 0 < minute < 10:
                                 minutestr = "0" + str(minute)
-                            elif 9 < minute < 59:
+                            elif 9 < minute < 60:
                                 minutestr = str(minute)
 
                             return [7, hourstr + minutestr, hourstr, minutestr]
