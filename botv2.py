@@ -5,7 +5,11 @@ import sys
 import subprocess
 import discord
 from discord.ext import commands
+from discord.ext import tasks
+
 from dotenv import load_dotenv
+
+from datetime import datetime
 
 #IMPORTS Discord..............END
 import usertime
@@ -33,8 +37,6 @@ bot = commands.Bot(command_prefix = "",intents=intents)
 async def on_ready():
     print("Im Ready")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="my.help"), status=discord.Status.online)
-    
-    subprocess.Popen(["python", "currenttime.py"])
 
 @bot.event
 async def on_message(message):
@@ -92,6 +94,15 @@ async def on_message(message):
     if "my.mensatime.help" == messagecontent or "my.help" == messagecontent:
         embed = discord.Embed(title="MensaBot Help", description=helpmessage.help(),color=0x9998ff)
         await message.channel.send(embed = embed)
+
+@tasks.loop(seconds = 30) # repeat after every 30 seconds
+async def userresetloop():
+    currenttime = str(datetime.now().strftime("%H:%M"))
+    if currenttime == "15:00":
+        usertime.userreset()
+
+
+userresetloop.start()
 
 #BOT >>RUN
 bot.run(TOKEN)
