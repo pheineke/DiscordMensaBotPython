@@ -1,5 +1,6 @@
 # bot.py
 
+import asyncio
 import os
 import sys
 import subprocess
@@ -95,14 +96,16 @@ async def on_message(message):
         embed = discord.Embed(title="MensaBot Help", description=helpmessage.help(),color=0x9998ff)
         await message.channel.send(embed = embed)
 
-@tasks.loop(seconds = 30) # repeat after every 30 seconds
-async def userresetloop():
-    currenttime = str(datetime.now().strftime("%H:%M"))
-    if currenttime == "15:00":
-        usertime.userreset()
+async def my_task(ctx, username):
+    while True:
+        currenttime = str(datetime.now().strftime("%H:%M"))
+        if currenttime == "15:00":
+           usertime.userreset()
+        await asyncio.sleep(30)
 
-
-userresetloop.start()
+@bot.command()
+async def info(ctx, username):
+    bot.loop.create_task(my_task(ctx, username))
 
 #BOT >>RUN
 bot.run(TOKEN)
