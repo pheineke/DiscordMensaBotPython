@@ -38,6 +38,7 @@ bot = commands.Bot(command_prefix = "",intents=intents)
 async def on_ready():
     print("Im Ready")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="my.help"), status=discord.Status.online)
+    bot.loop.create_task(my_task())
 
 @bot.event
 async def on_message(message):
@@ -102,10 +103,6 @@ async def my_task(ctx, username):
         if currenttime == "15:00":
            usertime.userreset()
         await asyncio.sleep(30)
-
-@bot.command()
-async def info(ctx, username):
-    bot.loop.create_task(my_task(ctx, username))
 
 #BOT >>RUN
 bot.run(TOKEN)
