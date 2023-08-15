@@ -99,6 +99,7 @@ async def on_message(message):
     
     if "admin.xs.userreset" == messagecontent and author2 == "r4ge_6168":
         usertime.userreset()
+        await message.channel.send("###userreset done")
 
 async def my_task():
     while True:
