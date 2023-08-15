@@ -105,12 +105,13 @@ async def on_message(message):
     if "admin:userdelete" in messagecontent and author2 == "r4ge_6168":
         try:
             string = messagecontent.split(":")
+            print(string)
         except:
             await message.channel.send("###userdel cmd falsch (admin:userdelete:username:yes)")
         else:
             if string[3] == "yes":
-                usertime.userdelete([2])
-            await message.channel.send("###userreset done")
+                returnstring = usertime.userdelete(string[2])
+            await message.channel.send(returnstring)
 
 
 async def my_task():
