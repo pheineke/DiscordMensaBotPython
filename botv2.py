@@ -108,8 +108,8 @@ async def on_message(message):
         except:
             await message.channel.send("###userdel cmd falsch (admin:userdelete:username:yes)")
         else:
-            if string[4] == "yes":
-                usertime.userdelete([3])
+            if string[3] == "yes":
+                usertime.userdelete([2])
             await message.channel.send("###userreset done")
 
 
