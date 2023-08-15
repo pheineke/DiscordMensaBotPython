@@ -96,6 +96,9 @@ async def on_message(message):
     if "my.mensatime.help" == messagecontent or "my.help" == messagecontent:
         embed = discord.Embed(title="MensaBot Help", description=helpmessage.help(),color=0x9998ff)
         await message.channel.send(embed = embed)
+    
+    if "admin.xs.userreset" == messagecontent and author2 == "r4ge_6168":
+        usertime.userreset()
 
 async def my_task():
     while True:
