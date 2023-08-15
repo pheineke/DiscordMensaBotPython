@@ -42,7 +42,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author.bot:
+    if message.author.bot and message.author.bot == "N1ghts Little Helper#2772":
         return
 
     author = message.author.mention
@@ -97,7 +97,7 @@ async def on_message(message):
         embed = discord.Embed(title="MensaBot Help", description=helpmessage.help(),color=0x9998ff)
         await message.channel.send(embed = embed)
 
-async def my_task(ctx, username):
+async def my_task():
     while True:
         currenttime = str(datetime.now().strftime("%H:%M"))
         if currenttime == "15:00":
