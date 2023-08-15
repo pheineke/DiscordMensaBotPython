@@ -104,7 +104,7 @@ async def on_message(message):
         await message.channel.send("###userreset done")
     if "admin|userdelete" in messagecontent and author2 == "r4ge_6168":
         try:
-            string = messagecontent.split("|")
+            string = messagecontent.split(":")
         except:
             await message.channel.send("###userdel cmd falsch (admin|userdelete|username|yes)")
         else:
