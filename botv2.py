@@ -97,9 +97,21 @@ async def on_message(message):
         embed = discord.Embed(title="MensaBot Help", description=helpmessage.help(),color=0x9998ff)
         await message.channel.send(embed = embed)
     
+
+    ## ADMIN COMMANDS
     if "admin.xs.userreset" == messagecontent and author2 == "r4ge_6168":
         usertime.userreset()
         await message.channel.send("###userreset done")
+    if "admin.userdelete" in messagecontent and author2 == "r4ge_6168":
+        try:
+            string = messagecontent.split(".")
+        except:
+            await message.channel.send("###userdel cmd falsch (admin.userdelete.username.yes)")
+        else:
+            if string[4] == "yes":
+                usertime.userdelete([3])
+            await message.channel.send("###userreset done")
+
 
 async def my_task():
     while True:
