@@ -111,14 +111,27 @@ def userreset():
     data = jsh.openjsonfile('usercache.json')
     data2 = {}
     for key, value in data.items():
-        if not key in localuserconstants:
+        if key in localuserconstants:
             data2[key] = value
     jsh.savefile(data2, 'usercache.json')
 
 # TESTING:
 
 if __name__ == "__main__":
+        x = 5
+        time.sleep(x)
+        userwrite("n1ghtw1tch", 1300)
+        time.sleep(x)
+        userwrite("sees", 1300)
+        time.sleep(x)
         setuserconst("n1ghtw1tch")
+        time.sleep(x)
+        userreset()
+        time.sleep(x)
+        userwrite("sees", 1300)
+        time.sleep(x)
+        deluserconst("n1ghtw1tch")
+        time.sleep(x)
         userreset()
         '''
         sleep = 2
