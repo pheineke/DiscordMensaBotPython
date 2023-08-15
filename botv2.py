@@ -102,11 +102,11 @@ async def on_message(message):
     if "admin.xs.userreset" == messagecontent and author2 == "r4ge_6168":
         usertime.userreset()
         await message.channel.send("###userreset done")
-    if "admin.userdelete" in messagecontent and author2 == "r4ge_6168":
+    if "admin|userdelete" in messagecontent and author2 == "r4ge_6168":
         try:
-            string = messagecontent.split(".")
+            string = messagecontent.split("|")
         except:
-            await message.channel.send("###userdel cmd falsch (admin.userdelete.username.yes)")
+            await message.channel.send("###userdel cmd falsch (admin|userdelete|username|yes)")
         else:
             if string[4] == "yes":
                 usertime.userdelete([3])
