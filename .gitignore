@@ -1,2 +1,5 @@
 .env
 usercache.json
+userconstants.json
+usermapping.json
+__pycache__/

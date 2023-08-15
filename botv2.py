@@ -46,12 +46,12 @@ async def on_message(message):
         return
 
     author = message.author.mention
-    print(author)
+    #print(author)
     author2 = str(message.author)
-    print(author2)
+    #print(author2)
 
     messagecontent = message.content.lower()
-    print("Message Content: " + message.content)
+    #print("Message Content: " + message.content)
 
     if "mensatime" in messagecontent:
         # Erwähnten Benutzer abrufen

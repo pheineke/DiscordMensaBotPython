@@ -64,9 +64,11 @@ def userwrite(user, time):
 def userwriteuser(user0, user1):
         try:
                 user1time = userread(user1)
+                int(user1time)
         except:
                 return "nicht gefunden."
         else:
+                
                 user0 = user0.lower()
                 userwrite(user0, user1time[:2] + user1time[3:])
                 return "als deine Zeit eingetragen." 
