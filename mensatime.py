@@ -8,6 +8,12 @@ def check(messagecontent):
     mensatime = messagesplit[1:]
     equal = messagesplit[2:]
     time = messagesplit[3:]
+    try:
+        elselist = messagesplit[4:]
+        elselistlen = len(elselist)
+        
+    except:
+        print("Nothing else")
     
     print(myxs, mensatime, equal, time)
 
@@ -48,6 +54,8 @@ def check(messagecontent):
                     return [5]
                 elif '<@' in time0 and '>' in time0:
                     return [8, time0]
+                elif not elselist:
+                    return [6]
                 else:
                     try:
                         hour = int(time0)
@@ -74,7 +82,7 @@ def check(messagecontent):
                                 minutestr = str(minute)
 
                             return [7, hourstr + minutestr, hourstr, minutestr]
-
+                
             else:
                 return[6]
              
