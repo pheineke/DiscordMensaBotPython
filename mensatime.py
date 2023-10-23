@@ -45,7 +45,6 @@ def check(messagecontent):
             if equal[0] == '=' and time:
                 print("1")
                 print(time)
-                print(time0)
                 print(elselist)
                 time0 = time[0].lower()
                 if time0 == 'false' or time0 == 'none':
@@ -63,7 +62,7 @@ def check(messagecontent):
                 elif not elselist:
                     print("2")
                     return [6]
-                elif time0 == 'jetzt':
+                elif time == 'jetzt':
                     print(time0)
                     timejetzt = str(datetime.now().strftime("%H%M"))
                     print(timejetzt)
