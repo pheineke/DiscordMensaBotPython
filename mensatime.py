@@ -58,6 +58,7 @@ def check(messagecontent):
                 elif not elselist:
                     return [6]
                 elif time0 == 'jetzt':
+                    print(time0)
                     timejetzt = str(datetime.now().strftime("%H:%M")).replace(":", "")
                     return [7, timejetzt, timejetzt[:2], timejetzt[2:]]
                 else:
