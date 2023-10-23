@@ -57,6 +57,7 @@ def check(messagecontent):
                 elif '<@' in time0 and '>' in time0:
                     return [8, time0]
                 elif not elselist:
+                    print("2")
                     return [6]
                 elif time0 == 'jetzt':
                     print(time0)
