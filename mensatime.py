@@ -1,5 +1,6 @@
 import re
 import usertime
+from datetime import datetime
 
 def check(messagecontent):
     messagesplit = re.split(r'[.: ​]', messagecontent)
@@ -56,6 +57,9 @@ def check(messagecontent):
                     return [8, time0]
                 elif not elselist:
                     return [6]
+                elif time0 == 'jetzt':
+                    timejetzt = str(datetime.now().strftime("%H:%M")).replace(":", "")
+                    return [7, timejetzt, timejetzt[:2], timejetzt[2:]]
                 else:
                     try:
                         hour = int(time0)
