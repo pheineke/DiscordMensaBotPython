@@ -59,7 +59,8 @@ def check(messagecontent):
                     return [6]
                 elif time0 == 'jetzt':
                     print(time0)
-                    timejetzt = str(datetime.now().strftime("%H:%M")).replace(":", "")
+                    timejetzt = str(datetime.now().strftime("%H%M"))
+                    print(timejetzt)
                     return [7, timejetzt, timejetzt[:2], timejetzt[2:]]
                 else:
                     try:
@@ -104,7 +105,7 @@ def check(messagecontent):
 # Variable Wochentage
 
 if __name__ == "__main__":
-        print(check("my.mensatime = none"))
+        print(check("my.mensatime = jetzt"))
 
 
     
