@@ -45,6 +45,8 @@ def check(messagecontent):
             if equal[0] == '=' and time:
                 print("1")
                 print(time)
+                print(time0)
+                print(elselist)
                 time0 = time[0].lower()
                 if time0 == 'false' or time0 == 'none':
                     return [2, 'false']
