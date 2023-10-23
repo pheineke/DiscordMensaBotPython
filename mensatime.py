@@ -47,6 +47,7 @@ def check(messagecontent):
                 print(time)
                 print(elselist)
                 time0 = time[0].lower()
+                print(time0)
                 if time0 == 'false' or time0 == 'none':
                     return [2, 'false']
                 elif time0 == 'true':
@@ -59,14 +60,14 @@ def check(messagecontent):
                     return [5]
                 elif '<@' in time0 and '>' in time0:
                     return [8, time0]
-                elif not elselist:
-                    print("2")
-                    return [6]
-                elif time == 'jetzt':
+                elif time0 == 'jetzt':
                     print(time0)
                     timejetzt = str(datetime.now().strftime("%H%M"))
                     print(timejetzt)
                     return [7, timejetzt, timejetzt[:2], timejetzt[2:]]
+                elif not elselist:
+                    print("2")
+                    return [6]
                 else:
                     try:
                         hour = int(time0)
