@@ -17,6 +17,7 @@ def check(messagecontent):
         print("Nothing else")
     
     print(myxs, mensatime, equal, time)
+    print(elselist)
 
 
     '''
@@ -43,6 +44,7 @@ def check(messagecontent):
         if '=' in messagecontent:
             if equal[0] == '=' and time:
                 print("1")
+                print(time)
                 time0 = time[0].lower()
                 if time0 == 'false' or time0 == 'none':
                     return [2, 'false']
