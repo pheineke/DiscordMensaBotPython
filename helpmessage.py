@@ -8,7 +8,7 @@ def help():
                 >> **= False** oder **= None**  - wird später bei xs.mensatime wichtig.\n
                 >> **= anderen User pingen**, oder seinen Usertag eintragen.\n
                    - Setzt den User auf den anderen User.\n
-                >> **= const** oder **= contant** - Setzt den User auf konstant\n
+                >> **= const** oder **= constant** - Setzt den User auf konstant\n
                    - (Dies ist noch ein Experimentelles Feature, es sollten alle nicht-constant User um 15:00 resettet werden.)\n
                 >> **= nconst** oder **= notconstant** - das Gegenteil von **const**\n
                 **xs.mensatime**\n
